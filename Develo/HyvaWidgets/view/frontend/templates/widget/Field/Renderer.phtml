@@ -1,0 +1,241 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Develo\HyvaWidgets\Block\Renderer\Renderer;
+use Magento\Framework\Escaper;
+
+// phpcs:disable Generic.Files.LineLength.TooLong
+
+/** @var Renderer $block */
+/** @var Escaper $escaper */
+
+$element = $block->getElement();
+$htmlId = $element->getHtmlId();
+$htmlName = $element->getName();
+
+$rows = $block->getRows();
+?>
+<div class="widget-image-field admin__field field">
+    <label class="label admin__field-label">
+        <span><?= $escaper->escapeHtml($element->getLabel()); ?></span>
+    </label>
+    <div class="admin__field-control control">
+        <table class="admin__control-table tiers_table" id="tiers_table">
+            <thead>
+            <tr>
+                <?php foreach ($rows as $rowData): ?>
+                    <th><?= $escaper->escapeHtml(__($rowData['label'])); ?></th>
+                <?php endforeach; ?>
+                <th><?= $escaper->escapeHtml(__('Action')); ?></th>
+            </tr>
+            </thead>
+            <tbody id="<?= $escaper->escapeHtmlAttr(/** @noEscape */ $htmlId); ?>_container"></tbody>
+            <tfoot>
+            <tr>
+                <td  class="col-actions-add"
+                     colspan="<?= (int) count($rows) + 1; ?>"
+                >
+                    <?= $block->getAddButtonHtml(); ?>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+        <div class="note admin__field-note">
+            <?= $escaper->escapeHtml($element->getNote()); ?>
+        </div>
+    </div>
+</div>
+<script>
+    require([
+        'mage/template',
+        "jquery",
+        "prototype",
+        "mage/adminhtml/form",
+        "mage/adminhtml/browser"
+    ], function (mageTemplate, $j) {
+// <![CDATA[
+        var <?= /** @noEscape */ $htmlId; ?>RowsTemplate = '<tr>'
+            <?php foreach ($block->getRows() as $fieldName => $rowData): ?>
+            + '<td>'
+                <?php if ($rowData['type'] === 'text'): ?>
+                    + '<input type="text" name="<?= /** @noEscape */ $htmlName; ?>[<%- data.index %>][<?= /** @noEscape */ $fieldName; ?>]" value="<%- data.<?= /** @noEscape */ $fieldName; ?> %>" class="widget-option input-text admin__control-text" />'
+                <?php endif; ?>
+
+                <?php if ($rowData['type'] === 'textarea'): ?>
+                    + '<textarea name="<?= /** @noEscape */ $htmlName; ?>[<%- data.index %>][<?= /** @noEscape */ $fieldName; ?>]" class="widget-option input-textarea admin__control-text" /><%- data.<?= /** @noEscape */ $fieldName; ?> %></textarea>'
+                <?php endif; ?>
+
+                <?php if ($rowData['type'] === 'select'): ?>
+                    + '<select name="<?= /** @noEscape */ $htmlName; ?>[<%- data.index %>][<?= /** @noEscape */ $fieldName; ?>]" id="<?= /** @noEscape */ "select_{$htmlId}_{$fieldName}_<%- data.index %>"; ?>" class="widget-option select admin__control-select">'
+                    <?php foreach ($rowData['options'] as $value => $label): ?>
+                    + '<option value="<?= /** @noEscape */ $value; ?>"><?= /** @noEscape */ $label; ?></option>'
+                    <?php endforeach; ?>
+                    + '</select>'
+                <?php endif; ?>
+
+                <?php if ($rowData['type'] === 'image'): ?>
+                    + '<button type="button" class="action-default scalable" id="<?= /** @noEscape */ "image_button_{$htmlId}_{$fieldName}_<%- data.index %>"; ?>"><span><?= $escaper->escapeHtml(__('Upload'));?></span></button>'
+                    + '<input id="<?= /** @noEscape */ "image_{$htmlId}_{$fieldName}_<%- data.index %>"; ?>" name="<?= /** @noEscape */ $htmlName; ?>[<%- data.index %>][<?= /** @noEscape */ $fieldName; ?>]" type="hidden" value="<%- data.<?= /** @noEscape */ $fieldName; ?> %>" class="image-input" />'
+                    + '<div class="file-uploader-preview" style="display:none">'
+                    + '<a target="_blank" href="">'
+                    + '<img class="preview-image" tabindex="0" src="">'
+                    + '</a>'
+                    + '<div class="actions">'
+                    + '<button type="button" class="action-remove">'
+                    + '<span><?= $escaper->escapeJs(__('Delete image')); ?></span>'
+                    + '</button>'
+                    + '</div>'
+                    + '</div>'
+                <?php endif; ?>
+
+            + '</td>'
+            <?php endforeach; ?>
+
+            + '<td class="col-delete"><input type="hidden" name="<?= /** @noEscape */ $htmlName; ?>[<%- data.index %>][delete]" class="delete" value="" />'
+            + '<button type="button" class="action-delete scalable icon-btn" onclick="return <?= /** @noEscape */ $htmlId; ?>RowsControl.deleteItem(event);">'
+            + '<span><?= $escaper->escapeJs(__("Delete")) ?></span></button></td>'
+            + '</tr>';
+        var selectFields = [],
+            imageFields = [];
+        <?php foreach ($block->getRows() as $fieldName => $rowData): ?>
+            <?php if ($rowData['type'] == 'select'): ?>
+                selectFields.push('<?= /** @noEscape */ $fieldName; ?>');
+            <?php elseif ($rowData['type'] == 'image'): ?>
+                imageFields.push('<?= /** @noEscape */ $fieldName; ?>');
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+        var <?= /** @noEscape */ $htmlId; ?>RowsControl = {
+            template: mageTemplate(<?= /** @noEscape */ $htmlId; ?>RowsTemplate),
+            itemsCount: 0,
+            uploadImageUrl: '<?= $escaper->escapeJs($escaper->escapeUrl($block->getUploadButtonOnClickActionUrl())); ?>',
+            mediaUrl: '<?= $escaper->escapeJs($escaper->escapeUrl($block->getMediaUrl())); ?>',
+            addItem: function () {
+                var self = this;
+                var data = {
+                    index: this.itemsCount++
+                };
+
+                if (typeof arguments[0] != 'undefined') {
+                    data = Object.assign(data, arguments[0]);
+                }
+
+                Element.insert($('<?= /** @noEscape */ $htmlId ?>_container'), {
+                    bottom: this.template({
+                        data: data
+                    })
+                });
+
+
+                this.selectFields.forEach(function (name) {
+                    var select = $('select_<?= /** @noEscape */ $htmlId; ?>_' + name + '_' + data.index);
+                    if (!select) {
+                        return false;
+                    }
+
+                    var value = (typeof data[name] != 'undefined') ? data[name] : false;
+                    select.childElements().forEach(function (element) {
+                        if (value == element.readAttribute('value')) {
+                            element.setAttribute('selected', 'selected');
+                        }
+                    });
+                });
+                var _uploadImageUrl = this.uploadImageUrl;
+                this.imageFields.forEach(function (name) {
+                    var button = $('image_button_<?= /** @noEscape */ $htmlId; ?>_' + name + '_' + data.index),
+                        input = $j('#image_<?= /** @noEscape */ $htmlId; ?>_' + name + '_' + data.index);
+                    var uploadImageUrl = _uploadImageUrl.replace('__target_element_id__', 'image_<?= /** @noEscape */ $htmlId; ?>_' + name + '_' + data.index);
+                    if (!button) {
+                        return false;
+                    }
+                    button.on('click', function () {
+                        MediabrowserUtility.openDialog(uploadImageUrl)
+                    });
+                    input.on('change', self._updateImage.bind(self));
+                    input.next().find('button.action-remove').first().click(self._deleteImage.bind(self));
+                    input.trigger('change');
+                });
+            },
+            deleteItem: function (event) {
+                var tr = Event.findElement(event, 'tr');
+                if (tr) {
+                    Element.select(tr, '.delete').each(function (elem) {
+                        elem.value = '1'
+                    });
+                    Element.select(tr, ['input', 'select']).each(function (elem) {
+                        elem.hide()
+                    });
+                    Element.hide(tr);
+                    Element.addClassName(tr, 'no-display template').remove();
+                }
+                return false;
+            },
+            _updateImage: function (event) {
+                var input = $j(event.target);
+                var newImagePath = input.val();
+                var newImageUrl = newImagePath;
+                if (newImagePath.indexOf(this.mediaUrl) === -1) {
+                    var value = newImagePath;
+                    var directive_re = /___directive/;
+                    if (directive_re.test(value)) {
+                        var split_value = value.split("/___directive/");
+                        split_value = split_value[1].split("/key/");
+                        split_value = split_value[0].split(",");
+                        split_value = split_value[0].replace("/", "");
+
+                        var media_url_insert = atob(split_value);
+                        var attributes = media_url_insert
+                            .replace("{{", "")
+                            .replace("}}", "")
+                            .split(" ")
+                        ;
+                        for (var i = 0; i < attributes.length; i++) {
+                            var split_attribute = attributes[i]
+                                .replace("\"", "")
+                                .replace(new RegExp("\\\"" + '$'), '')
+                                .split("=")
+                            ;
+                            if (split_attribute[0] === 'url') {
+                                newImagePath = split_attribute[1];
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (newImagePath.indexOf(this.mediaUrl) === -1) {
+                    newImageUrl = this.mediaUrl + newImagePath;
+                }
+
+                if (newImagePath.length) {
+                    var previewDiv = input.next();
+                    previewDiv.find('a').first().attr('href', newImageUrl);
+                    previewDiv.find('img').first().attr('src', newImageUrl);
+                    input.val(newImagePath);
+                    previewDiv.show();
+                }
+            },
+            _deleteImage: function (event) {
+                var button = $j(event.target);
+                var previewDiv = button.parents('.file-uploader-preview');
+                previewDiv.find('a').first().attr('href', '');
+                previewDiv.find('img').first().attr('src', '');
+                previewDiv.prev().val('');
+                previewDiv.hide();
+            }
+        };
+        <?= /** @noEscape */ $htmlId; ?>RowsControl.selectFields = selectFields;
+        <?= /** @noEscape */ $htmlId; ?>RowsControl.imageFields = imageFields;
+        window.<?= /** @noEscape */ $htmlId; ?>RowsControl = <?= /** @noEscape */ $htmlId; ?>RowsControl;
+
+        <?php foreach ($block->getValues() as $rowData): ?>
+            <?= /** @noEscape */ $htmlId; ?>RowsControl.addItem(<?= /** @noEscape */ json_encode($rowData); ?>);
+        <?php endforeach; ?>
+// ]]>
+    });
+</script>
