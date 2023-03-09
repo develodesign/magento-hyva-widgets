@@ -1,0 +1,230 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Develodesign\CmsWidgets\Block\Widget\ContentBlock" id="develodesign_contentblock" placeholder_image="Develodesign_CmsWidgets::images/widget-preview-content-block.png">
+        <label>Develo - Content Block</label>
+        <description>Content Block</description>
+        <parameters>
+            <parameter name="content_title" sort_order="10" xsi:type="text" visible="true">
+                <label>Content Title</label>
+                <description>Accepts HTML input</description>
+            </parameter>
+
+            <parameter name="content_text" required="true" sort_order="20" xsi:type="block" visible="true">
+                <label>Content Text</label>
+                <description>Accepts HTML input</description>
+                <block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\Textarea"/>
+            </parameter>
+
+            <parameter name="content_background_color" sort_order="30" xsi:type="text" visible="true">
+                <label>Content Background Color</label>
+                <description>Accepts Hex-Code Color (default is #F1F8FB)</description>
+            </parameter>
+
+
+            <parameter name="content_image" sort_order="40" xsi:type="block" visible="true">
+                <label>Content Image</label>
+                <block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="content_link_text" sort_order="50" xsi:type="text" visible="true">
+                <label>Content Link Text</label>
+            </parameter>
+
+            <parameter name="content_link_url" sort_order="60" xsi:type="text" visible="true">
+                <label>Content Link URL</label>
+            </parameter>
+
+            <parameter name="content_link_is_button" xsi:type="select" visible="true" sort_order="70">
+                <label translate="true">Content Button or Link</label>
+                <options>
+                    <option name="link" value="0" selected="true">
+                        <label>Link</label>
+                    </option>
+                    <option name="button" value="1">
+                        <label>Button</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="content_layout_position" xsi:type="select" visible="true" sort_order="80">
+                <label translate="true">Content Layout Position</label>
+                <options>
+                    <option name="left" value="left" selected="true">
+                        <label>Left</label>
+                    </option>
+                    <option name="right" value="right">
+                        <label>Right</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="content_margin" xsi:type="text" visible="true" sort_order="90">
+                <label translate="true">Margin Values</label>
+                <description>Enter margin in css (example: 20px 0 0 0)</description>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget class="Develodesign\CmsWidgets\Block\Widget\FeaturedImageBlock" id="develodesign_image_feature_block" placeholder_image="Develodesign_CmsWidgets::images/widget-preview-featured-image-block.png">
+        <label>Develo - Featured Image Block</label>
+        <description>Featured Image Block</description>
+
+        <parameters>
+            <!-- `conditions` is a hardcoded parameter name that serializes multidimensional arrays -->
+            <!-- Without this, you'll get an error about array to string conversion in \Magento\Widget\Model\Widget\Instance::generateLayoutUpdateXml -->
+            <parameter name="conditions" xsi:type="block" sort_order="50" required="false" visible="true">
+                <label translate="true">Image Features</label>
+                <description>IMPORTANT: Limited to maximum of 4</description>
+                <block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\FeaturedImageMultistep"/>
+            </parameter>
+
+            <parameter name="block_margin" xsi:type="text" visible="true" sort_order="90">
+                <label translate="true">Margin Values</label>
+                <description>Enter margin in css (example: 20px 0 0 0)</description>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget class="Develodesign\CmsWidgets\Block\Widget\FeaturedIconBlock" id="develodesign_featured_icon_block" placeholder_image="Develodesign_CmsWidgets::images/widget-preview-featured-icon-block.png">
+        <label>Develo - Featured Icon Block</label>
+        <description>Featured Icon Block</description>
+
+        <parameters>
+            <!-- `conditions` is a hardcoded parameter name that serializes multidimensional arrays -->
+            <!-- Without this, you'll get an error about array to string conversion in \Magento\Widget\Model\Widget\Instance::generateLayoutUpdateXml -->
+            <parameter name="conditions" xsi:type="block" sort_order="50" required="false" visible="true">
+                <label translate="true">Icon Feature List</label>
+                <description>IMPORTANT: Limited to maximum of 4</description>
+                <block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\FeaturedIconMultistep"/>
+            </parameter>
+
+            <parameter name="block_margin" xsi:type="text" visible="true" sort_order="90">
+                <label translate="true">Margin Values</label>
+                <description>Enter margin in css (example: 20px 0 0 0)</description>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <!--Develo Horizontal Advert Widget-->
+
+	<widget class="Develodesign\CmsWidgets\Block\Widget\DeveloHorizontalAdvert" id="develo_horizontaladvert_widget" placeholder_image="Develodesign_CmsWidgets::images/horizontal-advert.png">
+		<label>Develo Horizontal Advert</label>
+		<description></description>
+		<parameters>
+			<parameter name="advert_title" sort_order="10" visible="true" xsi:type="text">
+				<label>Title</label>
+			</parameter>
+			<parameter name="advert_title_color" sort_order="20" visible="true" xsi:type="text">
+				<label>Title color,  must be a hexcode like: "#000000" (Include a hashtag. No semiocolon at the end)</label>
+			</parameter>
+			<parameter name="advert_content" sort_order="21" visible="true" xsi:type="block">
+				<label>Content</label>
+				<block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\TextField"/>
+			</parameter>
+			<parameter name="advert_content_color" sort_order="22" visible="true" xsi:type="text">
+				<label>Content color,  must be a hexcode like: "#000000" (Include a hashtag. No semiocolon at the end)</label>
+			</parameter>
+			<parameter name="advert_button_text" sort_order="23" visible="true" xsi:type="text">
+				<label>Button text</label>
+			</parameter>
+			<parameter name="advert_button_text_color" sort_order="24" visible="true" xsi:type="text">
+				<label>Button Text color, must be a hexcode like: "#000000" (Include a hashtag. No semiocolon at the end)</label>
+			</parameter>
+			<parameter name="advert_button_color" sort_order="25" visible="true" xsi:type="text">
+				<label>Button Background color, must be a hexcode like: "#ff00ff" (Include a hashtag. No semiocolon at the end)</label>
+			</parameter>
+			<parameter name="advert_button_url" sort_order="26" visible="true" xsi:type="text">
+				<label>Button URL</label>
+			</parameter>
+			<parameter name="advert_contact_image" xsi:type="block" visible="true" sort_order="27">
+				<label translate="true">Background Photo</label>
+				<description translate="true">Contact image</description>
+				<block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\ImageChooser">
+					<data>
+						<item name="button" xsi:type="array">
+							<item name="open" xsi:type="string">Choose Image...</item>
+						</item>
+					</data>
+				</block>
+			</parameter>
+			<parameter name="advert_bg_color" sort_order="28" visible="true" xsi:type="text">
+				<label>Background Color, must be a hexcode like: "#eeeeee" (Include a hashtag. No semiocolon at the end)</label>
+			</parameter>
+			<parameter name="advert_icon_image" xsi:type="block" visible="true" sort_order="29">
+				<label translate="true">Icon</label>
+				<description translate="true">Icon Image</description>
+				<block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\ImageChooser">
+					<data>
+						<item name="button" xsi:type="array">
+							<item name="open" xsi:type="string">Choose Image...</item>
+						</item>
+					</data>
+				</block>
+			</parameter>
+		</parameters>
+	</widget>
+
+	<!--Develo Quotes Block-->
+
+	<widget class="Develodesign\CmsWidgets\Block\Widget\DeveloQuotesBlock" id="develo_quotesblock_widget" placeholder_image="Develodesign_CmsWidgets::images/quotes-block.png">
+		<label>Develo QuotesBlock</label>
+		<description></description>
+		<parameters>
+			<parameter name="widgetquote-text1" sort_order="10" visible="true" xsi:type="block">
+				<label>Quote-text 1</label>
+				<block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\TextField"/>
+			</parameter>
+			<parameter name="widget-author1" sort_order="20" visible="true" xsi:type="text">
+				<label>Author 1</label>
+			</parameter>
+			<parameter name="widget-company-name1" sort_order="30" visible="true" xsi:type="text">
+				<label>Company Name 1</label>
+			</parameter>
+			<parameter name="widgetquote-text2" sort_order="40" visible="true" xsi:type="block">
+				<label>Quote-text 2</label>
+				<block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\TextField"/>
+			</parameter>
+			<parameter name="widget-author2" sort_order="50" visible="true" xsi:type="text">
+				<label>Author 2</label>
+			</parameter>
+			<parameter name="widget-company-name2" sort_order="60" visible="true" xsi:type="text">
+				<label>Company Name 2</label>
+			</parameter>
+			<parameter name="widgetquote-text3" sort_order="70" visible="true" xsi:type="block">
+				<label>Quote-text 3</label>
+				<block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\TextField"/>
+			</parameter>
+			<parameter name="widget-author3" sort_order="80" visible="true" xsi:type="text">
+				<label>Author 3</label>
+			</parameter>
+			<parameter name="widget-company-name3" sort_order="90" visible="true" xsi:type="text">
+				<label>Company Name 3</label>
+			</parameter>
+		</parameters>
+	</widget>
+
+	<!--Develo FAQ Accordion Widget-->
+	<widget id="develo_faq_widget" class="Develodesign\CmsWidgets\Block\Widget\DeveloFAQ" placeholder_image="Develodesign_CmsWidgets::images/DeveloFAQ.png">
+		<label translate="true">Develo FAQ Widget</label>
+		<description translate="true">Develo FAQ Widget Desc</description>
+		<parameters>
+
+			<parameter name="develo_faq_title" sort_order="10" visible="true" xsi:type="text">
+				<label>Widget title</label>
+			</parameter>
+
+			<!-- `conditions` is a hardcoded parameter name that serializes multidimensional arrays -->
+			<!-- Without this, you'll get an error about array to string conversion in \Magento\Widget\Model\Widget\Instance::generateLayoutUpdateXml -->
+			<parameter name="conditions" xsi:type="block" sort_order="50" required="false" visible="true">
+				<label translate="true">Steps</label>
+				<block class="Develodesign\CmsWidgets\Block\Widget\Adminhtml\DeveloFAQ"/>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>

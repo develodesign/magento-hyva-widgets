@@ -1,0 +1,45 @@
+<?php
+
+/** @var Develodesign\CmsWidgets\Block\Widget\FeaturedIconBlock $block */
+
+$multiSteps = $block->getSteps();
+$limitedSteps = array_slice($multiSteps, 0, 4);
+$margin = $block->getBlockMargin();
+
+// Easier here to use flex for dynamic item centering, but still make use of grid width sizings
+$itemWidths = [
+    ['count' => 1, 'classes' => 'w-full max-w-xs'],
+    ['count' => 2, 'classes' => 'sm:w-1/2'],
+    ['count' => 3, 'classes' => 'sm:w-1/2 md:1/3'],
+    ['count' => 4, 'classes' => 'sm:w-1/2 md:w-1/3 lg:w-1/4'],
+];
+
+$checkCorrectItemCount = current(array_filter($itemWidths, function ($item) use ($limitedSteps) {
+    return count($limitedSteps) == $item['count'];
+}));
+
+$getCorrectItemWidths = $checkCorrectItemCount['classes'];
+
+?>
+
+<?php if ($multiSteps) : ?>
+    <div class="flex flex-wrap justify-center my-12 xl:mx-8">
+        <?php foreach ($limitedSteps as $steps) :
+            $imageAlt = $steps['imagealt'] ?: 'Feature Image';
+        ?>
+            <div class="mx-auto <?= $getCorrectItemWidths ?> pr-4 last:pr-0">
+                <div class="">
+                    <img class="block mx-auto" src="<?= $steps['image'] ?>" alt="<?= $steps['imageAlt'] ?>">
+                    <div class="my-5 font-semibold text-center">
+                        <?= $steps['title'] ?>
+                    </div>
+                    <?php if ($steps['description']) : ?>
+                        <div class="leading-8 text-center">
+                            <?= $steps['description'] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php endif; ?>
