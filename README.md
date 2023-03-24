@@ -84,13 +84,24 @@ The Hyva-Widgets are built using:
 
 ## Installation
 
-**1**.To get started make sure that you have a Magento 2 development environment.
+**1**. To be able to use the Hyva-Widgets download the folders and upload to your local/cloud environment into app/code folder.
 
-**2**.Once you have your fully configured Magento 2 environment install Hyva-themes for Magento 2 these can be found at:
-https://docs.hyva.io/hyva-themes/getting-started/index.html
+**2**. Then run the following commands in the terminal:                                                                                              
+    - bin/magento setup:upgrade
+    - bin/magento setup:di:compile
 
-**3**.Then install Tailwind in Hyva-themes folder.
- 
+**3**. After running the setup commands you can then check the status of the module by running:
+       php bin/magento module:status Develodesign_HyvaCmsWidgets
+       
+**4**. If the module is disabled  you can enable by running:
+        bin/magento module:enable Develodesign_HyvaCmsWidgets
+        
+        
+**5**. Final steps are to clear the cache before using the modules:
+       bin/magento cache:clean
+       bin/magento cache:flush
+      
+  
 
 
 ## Usage
