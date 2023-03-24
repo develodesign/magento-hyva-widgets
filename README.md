@@ -30,13 +30,14 @@ A collection of UI Components created using Tailwind that can be easily added vi
 
 ## About the Project
 
-* FAQ widget: A widget that displays content as an FAQ block.
-* Quotes-Block widget: A widget that displays content for quotes in a row including author and company.
-* Horizontal-Advert widget: A widget that is a horizontal advert which includes a background image and colour, button and icon image.
-* Featured-Image-Block widget: A widget that has a block of images which display horizontally with title and text.
-* Feautured-Icon-Block widget: A widget that has also has a block of images displaying horizontally with title and text for each image.
-* Content-Block widget: A widget that has an image or content either in the left or right side evenly with a horizontal display. 
+This project has 6 Hyva-widgets that have been created using the Hyva-default theme and Tailwind. The 6 Hyva-Widgets include:
 
+* **FAQ widget**: A widget that displays content as an FAQ block.
+* **Quotes-Block widget**: A widget that displays content for quotes in a row including author and company.
+* **Horizontal-Advert widget**: A widget that is a horizontal advert which includes a background image and colour, button and icon image.
+* **Featured-Image-Block widget**: A widget that has a block of images which display horizontally with title and text.
+* **Featured-Icon-Block widget**: A widget that has also has a block of images displaying horizontally with title and text for each image.
+* **Content-Block widget**: A widget that has an image or content either in the left or right side evenly with a horizontal display. 
 
 
 ## Built with
