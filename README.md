@@ -79,6 +79,15 @@ This project has 6 Hyva-widgets that have been created using the Hyva-default th
 
 ## Built with
 
+The Hyva-Widgets are built using:
+
+* **Magento 2.4.4**
+* **Hyva-themes/Magento2-default-theme 1.1**
+* **Tailwind 1.0.0**
+
+
+
+
 
 ## Getting Started 
 
