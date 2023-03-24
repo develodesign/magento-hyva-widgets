@@ -4,33 +4,33 @@
 
 
 
-# magento-hyva-widgets
+# Magento-hyva-widgets
 A collection of UI Components created using Tailwind that can be easily added via Magento's admin via PB or CMS page editor
 
 
 
-# About the Project
+## About the Project
 
 
 
-# Built with
+## Built with
 
 
-# Getting Started 
+## Getting Started 
 
-## Prerequistes 
+### Prerequistes 
 
-## Installation
+### Installation
 
-# Usage
+## Usage
 
-# Roadmap 
+## Roadmap 
 
-# Contributing
+## Contributing
 
-# License
+## License
 
-# Contact
+## Contact
 
-# Acknowledgement
+## Acknowledgement
 
