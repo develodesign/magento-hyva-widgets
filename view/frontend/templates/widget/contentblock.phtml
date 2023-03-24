@@ -1,0 +1,37 @@
+<?php
+
+/** @var Develodesign\HyvaCmsWidgets\Block\Widget\ContentBlock $block */
+
+$title = $block->getContentTitle();
+$text = $block->getContentText();
+$imageUrl = $block->getContentImage(); // Ideal 1024w+
+$backgroundColor = $block->getContentBackgroundColor();
+$trimmedBackgroundColor = trim($backgroundColor, '#');
+$linkText = $block->getContentLinkText();
+$linkUrl = $block->getContentLinkUrl();
+$linkIsButton = (int)$block->getContentLinkIsButton(); // Casting to int as val is "0" or "1"
+$layoutPosition = $block->getContentLayoutPosition(); // "left" or "right"
+
+
+?>
+
+<div class="info-blocks">
+    <div class="info-block flex flex-wrap xl:flex-nowrap flex-row<?= $layoutPosition == "right" ? '-reverse' : ''; ?>">
+        <div class="flex items-center p-8 w-full sm:p-16 xl:w-1/2 left-block" style="<?= $backgroundColor ? 'background-color: #' . $trimmedBackgroundColor : '' ?>">
+            <div class="flex flex-wrap gap-y-10 items-center block-content">
+                <h3 class="flex flex-wrap text-xl font-bold"><?= htmlspecialchars_decode($title); ?></h3>
+                <p class="leading-8"><?= htmlspecialchars_decode($text); ?></p>
+                <?php
+                $linkExists = $linkText && $linkUrl;
+                if ($linkExists) : ?>
+                    <div class="block-content-link">
+                        <a href="<?= $linkUrl ?>" class="<?= $linkIsButton ? 'button button-primary' : ''; ?>"><?= $linkText ?></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="w-full xl:w-1/2 right-block">
+            <img class="object-cover w-full h-auto" src="<?= $imageUrl; ?>" />
+        </div>
+    </div>
+</div>
