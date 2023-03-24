@@ -113,6 +113,15 @@ After the installation of the required applications and dependencies the widgets
 
 ![Widget-icon](https://user-images.githubusercontent.com/102522996/227531396-636fece9-9c1c-43cf-9c69-ef75448d77af.png)
 
+4. Widgets can now be selected and added 
+
+![Add-Widgets](https://user-images.githubusercontent.com/102522996/227548778-e6b12fc1-ac9d-490c-ad4c-e67033a0779a.png)
+
+5. Final step is to add content in the relevant sections for the widget you choose and click on *insert widget* to save and then to save again in the   
+   Page-builder home-page. 
+   
+   
+
 
 
 
