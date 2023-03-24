@@ -111,6 +111,8 @@ After the installation of the required applications and dependencies the widgets
 
 3. Once your inside the Page builder by clicking on *Edit with Page-builder* a row or column needs to be added to the page and text element. Inside of the text element click on *edit* and then *insert widget* icon. 
 
+![Widget-icon](https://user-images.githubusercontent.com/102522996/227531396-636fece9-9c1c-43cf-9c69-ef75448d77af.png)
+
 
 
 
