@@ -39,7 +39,7 @@ This project has 6 Hyva-widgets that have been created using the Hyva-default th
 * **FAQ widget**: A widget that displays content as an FAQ block.
 
 
-![FAQ](https://user-images.githubusercontent.com/102522996/227517293-36937211-70d3-460a-bc1b-45f646abdcb6.png
+![FAQ](https://user-images.githubusercontent.com/102522996/227517293-36937211-70d3-460a-bc1b-45f646abdcb6.png)
 
 
 * **Quotes-Block widget**: A widget that displays content for quotes in a row including author and company.
