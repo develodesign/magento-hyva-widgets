@@ -34,6 +34,9 @@ This project has 6 Hyva-widgets that have been created using the Hyva-default th
 
 * **FAQ widget**: A widget that displays content as an FAQ block.
 * **Quotes-Block widget**: A widget that displays content for quotes in a row including author and company.
+
+![image (4)](https://user-images.githubusercontent.com/102522996/227515281-268138ed-0b1f-4e85-bd20-b302bb0ce4b6.png)
+
 * **Horizontal-Advert widget**: A widget that is a horizontal advert which includes a background image and colour, button and icon image.
 * **Featured-Image-Block widget**: A widget that has a block of images which display horizontally with title and text.
 * **Featured-Icon-Block widget**: A widget that has also has a block of images displaying horizontally with title and text for each image.
