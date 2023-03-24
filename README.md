@@ -107,6 +107,12 @@ After the installation of the required applications and dependencies the widgets
 
 2. The Hyva-Widgets then can be added by going to *Content > Pages* and then clicking on *Edit* in *Action* column for the specific page.
 
+![edit-page](https://user-images.githubusercontent.com/102522996/227529543-ac8bcf3e-5715-4ad1-a0b7-652d7d4efbef.png)
+
+3. Once your inside the Page builder by clicking on *Edit with Page-builder* a row or column needs to be added to the page and text element. Inside of the text element click on *edit* and then *insert widget* icon. 
+
+
+
 
 
 
