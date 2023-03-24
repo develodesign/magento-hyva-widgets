@@ -69,7 +69,7 @@ The Hyva-Widgets are built using:
 **4**. If the module is disabled  you can enable by running:
   * **bin/magento module:enable Develodesign_HyvaCmsWidgets**
 
-**5**. Final steps are to clear the cache before using the modules:
+**5**. Final steps are to clear the cache before using the module:
  * **bin/magento cache:clean**
  * **bin/magento cache:flush**
 
