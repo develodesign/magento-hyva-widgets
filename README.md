@@ -7,11 +7,9 @@
   - [Built with](#built-with)
   - [Getting Started](#getting-started)   
     - [Installation](#installation)
-  - [Usage](#usage)  
-  - [Contributing](#contributing)
-  - [License](#license)
+  - [Usage](#usage)     
   - [Contact](#contact)
-  - [Acknowledgement](#acknowledgement)
+  
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -100,18 +98,23 @@ https://docs.hyva.io/hyva-themes/getting-started/index.html
 
 After the installation of the required applications and dependencies the widgets can now be added in the Page-builder. These can be found in the admin page.
 
-1. Enusre that web-page is configured using the Hyva- theme in the admin by going to Content > Design > Configuration
+1. Enusre that web-page is configured using the Hyva- theme in the admin by going to *Content > Design > Configuration* and in the actions column set to *Hyva-default*
+
+![Hyva-default-theme](https://user-images.githubusercontent.com/102522996/227527077-a40043ff-99df-410e-83b0-4f184d67d03a.png)
+
+
+
+
+2. The Hyva-Widgets then can be added by going to *Content > Pages* and then clicking on *Edit* in *Action* column for the specific page.
 
 
 
 
 
 
-## Contributing
 
-## License
 
 ## Contact
 
-## Acknowledgement
+
 
