@@ -5,11 +5,9 @@
 - [Magento-hyva-widgets](#magento-hyva-widgets)
   - [About the Project](#about-the-project)
   - [Built with](#built-with)
-  - [Getting Started](#getting-started)
-    - [Prerequistes](#prerequistes)
+  - [Getting Started](#getting-started)   
     - [Installation](#installation)
-  - [Usage](#usage)
-  - [Roadmap](#roadmap)
+  - [Usage](#usage)  
   - [Contributing](#contributing)
   - [License](#license)
   - [Contact](#contact)
@@ -87,17 +85,27 @@ The Hyva-Widgets are built using:
 
 
 
-
-
-## Getting Started 
-
-### Prerequistes 
-
 ### Installation
+
+1.To get started make sure that you have a Magento 2 development environment.
+
+2.Once you have your fully configured Magento 2 environment install Hyva-themes for Magento 2 these can be found at:
+https://docs.hyva.io/hyva-themes/getting-started/index.html
+
+3.Then install Tailwind in Hyva-themes folder.
+ 
+
 
 ## Usage
 
-## Roadmap 
+After the installation of the required applications and dependencies the widgets can now be added in the Page-builder. These can be found in the admin page.
+
+1. Enusre that web-page is configured using the Hyva- theme in the admin by going to Content > Design > Configuration
+
+
+
+
+
 
 ## Contributing
 
