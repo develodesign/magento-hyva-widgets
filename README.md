@@ -33,6 +33,9 @@ A collection of UI Components created using Tailwind that can be easily added vi
 This project has 6 Hyva-widgets that have been created using the Hyva-default theme and Tailwind. The 6 Hyva-Widgets include:
 
 * **FAQ widget**: A widget that displays content as an FAQ block.
+
+![FAQ](https://user-images.githubusercontent.com/102522996/227517293-36937211-70d3-460a-bc1b-45f646abdcb6.png)
+
 * **Quotes-Block widget**: A widget that displays content for quotes in a row including author and company.
 
 ![image (4)](https://user-images.githubusercontent.com/102522996/227515281-268138ed-0b1f-4e85-bd20-b302bb0ce4b6.png)
