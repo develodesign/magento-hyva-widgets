@@ -78,7 +78,7 @@ The Hyva-Widgets are built using:
 
 * **Magento 2.4.4**
 * **Hyva-themes/Magento2-default-theme 1.1**
-* **Tailwind 1.0.0**
+* **Tailwind 2.1.5**
 
 
 
