@@ -25,7 +25,7 @@ $margin = $block->getContentMargin();
                 <?php
                 $linkExists = $linkText && $linkUrl;
                 if ($linkExists) : ?>
-                    <div class="block-content-link">
+                    <div class="block-content-link" style="margin-top:20px;">
                         <a href="<?= $linkUrl ?>" class="<?= $linkIsButton ? 'button button-primary' : ''; ?>"
                         <?php if ($linkIsButton) { ?> style="background-color: #0AB6FF; color:#FFFF; border-radius: 15px; padding:15px;"<?php } ?>
                         <?php if ($linkUrl) { ?> style="text-decoration:underline;"<?php } ?>><?= $linkText  ?></a>
